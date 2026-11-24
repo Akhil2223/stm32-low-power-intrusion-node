@@ -33,7 +33,7 @@ A FreeRTOS security/intrusion node on the **STM32 NUCLEO-L476RG**. It watches a 
 | User button (arm/disarm) | PC13 | B1 | EXTI13 (temporary, until the IR remote) |
 | UART TX / RX | PA2 / PA3 | — | USART2 |
 | Low-power timer | LPTIM1 | — | LSE clock, STOP2 wake-up |
-| Watchdog | IWDG | — | LSI, prescaler 64, reload 1999 (~4 s) |
+| Watchdog | IWDG | — | LSI, prescaler 64, reload 4095 (~8 s) |
 
 ### Hardware notes
 
@@ -110,7 +110,7 @@ Reset cause: normal
 
 ## Watchdog
 
-The IWDG (~4 s timeout) is only refreshed by `wdgTask`, and only after `sensorTask`, `alarmTask` and `outputTask` have each set their bit in `wdgEvents` within the last 2 s. Every task waits with a 1 s timeout instead of forever, so it checks in even when nothing is happening.
+The IWDG (~8 s timeout) is only refreshed by `wdgTask`, and only after `sensorTask`, `alarmTask` and `outputTask` have each set their bit in `wdgEvents` within the last 2 s. Every task waits with a 1 s timeout instead of forever, so it checks in even when nothing is happening.
 
 If a task hangs, `wdgTask` logs which check-ins are missing and stops refreshing, and the chip resets. On boot the firmware reads `RCC_FLAG_IWDGRST` and prints the reset cause.
 
