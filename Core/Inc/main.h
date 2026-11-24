@@ -67,8 +67,6 @@ void Error_Handler(void);
 #define BUZZER_GPIO_Port GPIOA
 #define LED_B_Pin GPIO_PIN_7
 #define LED_B_GPIO_Port GPIOA
-#define RELAY_Pin GPIO_PIN_10
-#define RELAY_GPIO_Port GPIOB
 #define LED_R_Pin GPIO_PIN_7
 #define LED_R_GPIO_Port GPIOC
 #define SHOCK_SW_Pin GPIO_PIN_8
