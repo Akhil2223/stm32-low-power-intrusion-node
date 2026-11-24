@@ -56,6 +56,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern COMP_HandleTypeDef hcomp2;
+extern LPTIM_HandleTypeDef hlptim1;
 extern UART_HandleTypeDef huart2;
 extern TIM_HandleTypeDef htim6;
 
@@ -231,6 +232,20 @@ void COMP_IRQHandler(void)
   /* USER CODE BEGIN COMP_IRQn 1 */
 
   /* USER CODE END COMP_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LPTIM1 global interrupt.
+  */
+void LPTIM1_IRQHandler(void)
+{
+  /* USER CODE BEGIN LPTIM1_IRQn 0 */
+
+  /* USER CODE END LPTIM1_IRQn 0 */
+  HAL_LPTIM_IRQHandler(&hlptim1);
+  /* USER CODE BEGIN LPTIM1_IRQn 1 */
+
+  /* USER CODE END LPTIM1_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
